@@ -15,7 +15,7 @@ export default function Contact() {
 
        <p className="text-gray-600">
   Syed Rahamthulla (Chairman)<br />
-  Syed Afrid<br />
+  Syed Afrid (Proprietor)<br />
   Nellore Road, Badvel<br />
   Andhra Pradesh, India
 </p>
