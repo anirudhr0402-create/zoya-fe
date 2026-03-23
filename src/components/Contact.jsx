@@ -10,10 +10,12 @@ export default function Contact() {
 
       <div className="bg-white max-w-md mx-auto p-8 rounded-2xl shadow-lg space-y-4 border border-cyan-100">
         <p className="font-bold text-lg text-cyan-600">
-          Zoya Clean
+          Zoya Industries
         </p>
 
         <p className="text-gray-600">
+          Syed Rahamthulla(Chairman) <br />
+          Syed Afrid
           Nellore road, Badvel <br />
           Andhra Pradesh, India
         </p>
@@ -22,7 +24,7 @@ export default function Contact() {
           href="tel:919390800787"
           className="block text-blue-600 font-semibold hover:underline"
         >
-          📞 +91 9390800787
+          📞 +91 9390800787 (Afrid)
         </a>
 
         <a
