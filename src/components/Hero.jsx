@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import banner from "../assets/Banner.jpeg";
+import banner from "../assets/banner.jpeg";
 
 export default function Hero() {
   const slides = [

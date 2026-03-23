@@ -4,24 +4,24 @@ import ProductModal from "./ProductModal";
 import Cart from "./Cart";
 import CartIcon from "./CartIcon";
 
-import detergentPowder from "../assets/Detergent powder.jpg";
-import detergentPowder2 from "../assets/Detergent powder2.jpeg";
+import detergentPowder from "../assets/detergent-powder.jpg";
+import detergentPowder2 from "../assets/detergent-powder2.jpeg";
 
-import dishWash from "../assets/Dish Wash.jpeg";
-import dishWash2 from "../assets/Dish Wash2.jpg";
+import dishWash from "../assets/dishwash.jpeg";
+import dishWash2 from "../assets/dishwash2.jpg";
 
-import floorCleaner from "../assets/Floor Cleaner.jpeg";
-import floorCleaner2 from "../assets/Floor Cleaner2.jpeg";
+import floorCleaner from "../assets/floor-cleaner.jpeg";
+import floorCleaner2 from "../assets/floor-cleaner2.jpeg";
 
-import liquidDetergent from "../assets/Liquid Detergent.jpeg";
-import liquidDetergent2 from "../assets/Liquid Detergent2.jpeg";
+import liquidDetergent from "../assets/liquid-detergent.jpeg";
+import liquidDetergent2 from "../assets/liquid-detergent2.jpeg";
 
-import handWash from "../assets/Hand wash.jpg";
-import phenoyl from "../assets/Phenyl.jpeg";
-import phenoyl2 from "../assets/Mogra Phenyl.jpeg";
-import toiletCleaner from "../assets/Toilet Cleaner.jpg";
+import handWash from "../assets/handwash.jpg";
+import phenoyl from "../assets/phenyl.jpeg";
+import phenoyl2 from "../assets/mogra-phenyl.jpeg";
+import toiletCleaner from "../assets/toilet-cleaner.jpg";
 
-import zoyaProducts from "../assets/Zoya Products.jpeg";
+import zoyaProducts from "../assets/zoya-products.jpeg";
 
 export default function Products() {
   const [selectedProduct, setSelectedProduct] = useState(null);
