@@ -17,7 +17,7 @@ export default function Navbar() {
         <div>
           <h1 className="text-2xl font-extrabold tracking-wide">
             <span className="bg-gradient-to-r from-cyan-500 via-blue-500 to-green-400 text-transparent bg-clip-text">
-              Zoya Clean
+              Zoya
             </span>
           </h1>
           <p className="text-[11px] text-gray-500 tracking-widest uppercase">

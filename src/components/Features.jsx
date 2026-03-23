@@ -8,7 +8,7 @@ export default function Features() {
   return (
     <section className="brush-reveal py-20 bg-white">
       <h2 className="text-3xl font-bold text-center mb-12 text-gray-800">
-        Why Choose Zoya Clean?
+        Why Choose Zoya?
       </h2>
 
       <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-10 px-6">

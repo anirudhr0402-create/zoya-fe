@@ -13,12 +13,12 @@ export default function Contact() {
           Zoya Industries
         </p>
 
-        <p className="text-gray-600">
-          Syed Rahamthulla(Chairman) <br />
-          Syed Afrid
-          Nellore road, Badvel <br />
-          Andhra Pradesh, India
-        </p>
+       <p className="text-gray-600">
+  Syed Rahamthulla (Chairman)<br />
+  Syed Afrid<br />
+  Nellore Road, Badvel<br />
+  Andhra Pradesh, India
+</p>
 
         <a
           href="tel:919390800787"

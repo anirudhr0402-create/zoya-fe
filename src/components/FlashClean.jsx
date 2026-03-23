@@ -21,10 +21,10 @@ export default function FlashClean() {
 
       {/* Text */}
       <div className="flex items-center justify-center h-full">
-        <h1 className="text-3xl font-bold text-blue-500 animate-pulse">
-          Instant Clean Power ⚡
-        </h1>
-      </div>
+  <h1 className="text-3xl font-bold text-blue-600 animate-pulse text-center">
+    Instant Clean Power ⚡ by Zoya
+  </h1>
+</div>
     </div>
   );
 }
