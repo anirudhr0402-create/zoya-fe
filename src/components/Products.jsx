@@ -7,21 +7,21 @@ import CartIcon from "./CartIcon";
 import detergentPowder from "../assets/Detergent powder.jpg";
 import detergentPowder2 from "../assets/Detergent powder2.jpeg";
 
-import dishWash from "../assets/Dish wash.jpeg";
-import dishWash2 from "../assets/Dish wash2.jpg";
+import dishWash from "../assets/Dish Wash.jpeg";
+import dishWash2 from "../assets/Dish Wash2.jpg";
 
-import floorCleaner from "../assets/Floor cleaner.jpeg";
-import floorCleaner2 from "../assets/Floor cleaner2.jpeg";
+import floorCleaner from "../assets/Floor Cleaner.jpeg";
+import floorCleaner2 from "../assets/Floor Cleaner2.jpeg";
 
-import liquidDetergent from "../assets/Liquid detergent.jpeg";
-import liquidDetergent2 from "../assets/Liquid detergent2.jpeg";
+import liquidDetergent from "../assets/Liquid Detergent.jpeg";
+import liquidDetergent2 from "../assets/Liquid Detergent2.jpeg";
 
 import handWash from "../assets/Hand wash.jpg";
 import phenoyl from "../assets/Phenyl.jpeg";
 import phenoyl2 from "../assets/Mogra Phenyl.jpeg";
-import toiletCleaner from "../assets/Toilet cleaner.jpg";
+import toiletCleaner from "../assets/Toilet Cleaner.jpg";
 
-import zoyaProducts from "../assets/zoya products.jpeg";
+import zoyaProducts from "../assets/Zoya Products.jpeg";
 
 export default function Products() {
   const [selectedProduct, setSelectedProduct] = useState(null);
