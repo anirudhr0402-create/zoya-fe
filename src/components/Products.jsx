@@ -1,52 +1,145 @@
+import { useState } from "react";
+import ProductCard from "./ProductCard";
+import ProductModal from "./ProductModal";
+import Cart from "./Cart";
+import CartIcon from "./CartIcon";
+
 import detergentPowder from "../assets/Detergent powder.jpg";
-import dishWash from "../assets/Dish wash.jpg";
-import floorCleaner from "../assets/Floor cleaner.jpg";
+import detergentPowder2 from "../assets/Detergent powder2.jpeg";
+
+import dishWash from "../assets/Dish wash.jpeg";
+import dishWash2 from "../assets/Dish wash2.jpg";
+
+import floorCleaner from "../assets/Floor cleaner.jpeg";
+import floorCleaner2 from "../assets/Floor cleaner2.jpeg";
+
+import liquidDetergent from "../assets/Liquid detergent.jpeg";
+import liquidDetergent2 from "../assets/Liquid detergent2.jpeg";
+
 import handWash from "../assets/Hand wash.jpg";
-import liquidDetergent from "../assets/Liquid detergent.jpg";
-import phenoyl from "../assets/Phenoyl.jpg";
+import phenoyl from "../assets/Phenyl.jpeg";
+import phenoyl2 from "../assets/Mogra Phenyl.jpeg";
 import toiletCleaner from "../assets/Toilet cleaner.jpg";
 
-const products = [
-  { name: "Detergent Powder", image: detergentPowder },
-  { name: "Dish Wash", image: dishWash },
-  { name: "Floor Cleaner", image: floorCleaner },
-  { name: "Hand Wash", image: handWash },
-  { name: "Liquid Detergent", image: liquidDetergent },
-  { name: "Phenoyl", image: phenoyl },
-  { name: "Toilet Cleaner", image: toiletCleaner },
-];
+import zoyaProducts from "../assets/zoya products.jpeg";
 
 export default function Products() {
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [cart, setCart] = useState([]);
+  const [showCart, setShowCart] = useState(false);
+
+  const products = [
+    {
+      name: "Detergent Powder",
+      images: [detergentPowder, detergentPowder2, zoyaProducts],
+    },
+    {
+      name: "Dish Wash",
+      images: [dishWash, dishWash2, zoyaProducts],
+    },
+    {
+      name: "Floor Cleaner",
+      images: [floorCleaner, floorCleaner2, zoyaProducts],
+    },
+    {
+      name: "Liquid Detergent",
+      images: [liquidDetergent, liquidDetergent2, zoyaProducts],
+    },
+    {
+      name: "Hand Wash",
+      images: [handWash, zoyaProducts],
+    },
+    {
+      name: "Phenyl",
+      images: [phenoyl2, zoyaProducts],
+    },
+    {
+      name: "Mogra Phenyl",
+      images: [phenoyl, zoyaProducts],
+    },
+    {
+      name: "Toilet Cleaner",
+      images: [toiletCleaner, zoyaProducts],
+    },
+  ];
+
+  // 🛒 Add to cart
+  const addToCart = (product) => {
+    setCart((prev) => {
+      const existing = prev.find((p) => p.name === product.name);
+
+      if (existing) {
+        return prev.map((p) =>
+          p.name === product.name
+            ? { ...p, qty: p.qty + 1 }
+            : p
+        );
+      }
+
+      return [...prev, { ...product, qty: 1 }];
+    });
+  };
+
+  // 🔄 Update quantity
+  const updateQty = (name, type) => {
+    setCart((prev) =>
+      prev
+        .map((p) =>
+          p.name === name
+            ? {
+              ...p,
+              qty: type === "inc" ? p.qty + 1 : p.qty - 1,
+            }
+            : p
+        )
+        .filter((p) => p.qty > 0)
+    );
+  };
+
+  const clearCart = () => {
+    setCart([]);
+  };
+
   return (
-    <section
-  id="products"
-  className="brush-reveal py-20 bg-gradient-to-b from-white to-cyan-50"
->
-      <h2 className="text-3xl font-bold text-center mb-12">
-        Our Premium Products
+    <section id="products" className="py-20 bg-gradient-to-b from-white to-cyan-50">
+
+      {/* 🛒 Cart Icon */}
+      <CartIcon cart={cart} onClick={() => setShowCart(!showCart)} />
+      {showCart && (
+        <Cart
+          cart={cart}
+          updateQty={updateQty}
+          onClose={() => setShowCart(false)}
+          clearCart={clearCart}
+        />
+      )}
+
+      <h2 className="text-3xl font-bold text-center mb-10">
+        Our Products
       </h2>
 
-      <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-3 gap-10 px-4">
+      {/* 🛍️ Products */}
+      <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-3 gap-8 px-4">
         {products.map((p, i) => (
-          <div
+          <ProductCard
             key={i}
-            className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition transform hover:-translate-y-2"
-          >
-            <img
-              src={p.image}
-              className="h-52 w-full object-contain bg-white"
-            />
-
-            <div className="p-4 text-center">
-              <h3 className="font-semibold text-lg">{p.name}</h3>
-
-              {/* <button className="mt-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-5 py-2 rounded-full hover:scale-105 transition">
-                Buy Now
-              </button> */}
-            </div>
-          </div>
+            name={p.name}
+            images={p.images}
+            onClick={() => setSelectedProduct(p)}
+            addToCart={() => addToCart(p)}
+            cart={cart}
+            updateQty={updateQty}
+          />
         ))}
       </div>
+
+      {/* 🔍 Modal */}
+      <ProductModal
+        product={selectedProduct}
+        onClose={() => setSelectedProduct(null)}
+        addToCart={addToCart}
+      />
+
     </section>
   );
 }

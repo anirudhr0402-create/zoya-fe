@@ -4,17 +4,36 @@ export default function Navbar() {
   const [active, setActive] = useState("home");
 
   const menu = [
-    { name: "Home", id: "home" },
-    { name: "Products", id: "products" },
-    { name: "Contact", id: "contact" },
-  ];
+  { name: "Home", id: "home" },
+  { name: "Products", id: "products" },
+  { name: "Reviews", id: "reviews" },
+  { name: "Contact", id: "contact" },
+];
+
+  // 🔥 Universal scroll handler
+  const handleScroll = (id) => {
+    setActive(id);
+
+    if (id === "home") {
+      // ✅ Always go to TOP
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      const section = document.getElementById(id);
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
 
   return (
     <nav className="fixed w-full top-0 z-50 backdrop-blur-lg bg-white/80 border-b border-gray-200 shadow-sm">
       <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
 
         {/* 🔥 Brand Logo + Tagline */}
-        <div>
+        <div
+          onClick={() => handleScroll("home")}
+          className="cursor-pointer"
+        >
           <h1 className="text-2xl font-extrabold tracking-wide">
             <span className="bg-gradient-to-r from-cyan-500 via-blue-500 to-green-400 text-transparent bg-clip-text">
               Zoya
@@ -28,10 +47,9 @@ export default function Navbar() {
         {/* Menu */}
         <div className="flex items-center gap-8">
           {menu.map((item) => (
-            <a
+            <button
               key={item.id}
-              href={`#${item.id}`}
-              onClick={() => setActive(item.id)}
+              onClick={() => handleScroll(item.id)}
               className="relative text-gray-700 font-medium transition"
             >
               {item.name}
@@ -41,7 +59,7 @@ export default function Navbar() {
                   active === item.id ? "w-full" : "w-0"
                 }`}
               ></span>
-            </a>
+            </button>
           ))}
 
           {/* Instagram Button */}

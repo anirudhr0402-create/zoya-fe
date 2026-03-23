@@ -65,3 +65,16 @@
   display: flex;
   animation: marquee 15s linear infinite;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+section {
+  scroll-margin-top: 100px;
+}
+
+#home {
+  scroll-margin-top: 0;
+}
