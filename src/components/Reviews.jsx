@@ -1,4 +1,11 @@
 import { useState, useMemo } from "react";
+import { db } from "../firebase";
+import {
+    collection,
+    addDoc,
+    getDocs,
+} from "firebase/firestore";
+import { useEffect } from "react";
 
 export default function Reviews() {
     const [reviews, setReviews] = useState([]);
@@ -26,22 +33,62 @@ export default function Reviews() {
         )[0];
     }, [reviews]);
 
-    const handleSubmit = () => {
-        if (!form.name || form.rating === 0) {
-            alert("Name and rating required");
-            return;
-        }
+    const handleSubmit = async () => {
+  if (!form.name || form.rating === 0) {
+    alert("Name and rating required");
+    return;
+  }
 
-        const newReview = {
-            ...form,
-            date: new Date(),
-        };
+  const newReview = {
+    name: form.name,
+    place: form.place,
+    rating: form.rating,
+    text: form.text,
+    createdAt: new Date().toISOString(),
+  };
 
-        setReviews([newReview, ...reviews]);
-        setForm({ name: "", place: "", rating: 0, text: "" });
-    };
+  try {
+    await addDoc(collection(db, "zoyareviews"), newReview);
+
+    // instant UI update
+    setReviews((prev) => [newReview, ...prev]);
+
+    setForm({
+      name: "",
+      place: "",
+      rating: 0,
+      text: "",
+    });
+  } catch (error) {
+    console.error("Error saving review:", error);
+  }
+};
 
     const topReviews = reviews.slice(0, 10);
+
+    useEffect(() => {
+        const fetchReviews = async () => {
+            try {
+                const snapshot = await getDocs(collection(db, "zoyareviews"));
+
+                const data = snapshot.docs.map((doc) => ({
+                    id: doc.id,
+                    ...doc.data(),
+                }));
+
+                // sort latest first
+                data.sort(
+                    (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+                );
+
+                setReviews(data);
+            } catch (err) {
+                console.error("Error fetching reviews:", err);
+            }
+        };
+
+        fetchReviews();
+    }, []);
 
     return (
         <section id="reviews" className="py-20 bg-white">
